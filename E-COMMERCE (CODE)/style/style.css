@@ -2,7 +2,6 @@ html,
 body {
     margin: 0;
     padding: 0;
-    overflow: hidden;
     height: 100vh;
     background-color: white;
 
@@ -15,75 +14,38 @@ header {
     display: flex;
     align-items: center;
     box-sizing: border-box;
+    justify-content: space-between;
+    padding: 0 2vw;
 }
 
 
 
 .logo {
 
-    height: 10vh;
+    height: 15vh;
     width: auto;
 
 
 }
 
-.nav-botoes {
+.centro {
     display: flex;
-    margin-left: auto;
-    align-items: center;
     gap: 2vw;
-    width: 100%;
-    justify-content: space-between;
-}
-
-.home {
-    display: flex;
     justify-content: center;
-    align-items: center;
+    flex: 1;
 }
 
-.cadastro {
+.direita {
     display: flex;
-    align-items: center;
-}
-
-.login {
-    display: flex;
-    align-items: center;
-}
-
-.registros {
-    display: flex;
-
     gap: 1vw;
-    align-items: center;
-    justify-content: flex-end;
 }
 
-.sobre {
-    display: flex;
-    align-items: center;
-    align-items: center;
-}
 
-.iniciar {
-    font-size: 10vh;
-    font-family: 'Roboto Slab', serif;
-    background-color: transparent;
-    color: white;
-    border: 0.4vh solid white;
-    border-radius: 2rem;
-    padding: 0.5rem 1.5rem;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
 
-.iniciar:hover {
-    background-color: white;
-    color: black;
-}
-
+.hom,
+.contat,
+.sobr,
+.iniciar,
 .cadastrar {
     font-size: 10vh;
     font-family: 'Roboto Slab', serif;
@@ -97,25 +59,39 @@ header {
     transition: all 0.3s ease;
 }
 
+.hom:hover,
+.contat:hover,
+.sobr:hover,
+.iniciar:hover,
 .cadastrar:hover {
     background-color: white;
     color: black;
 }
 
-.sobr {
-    font-size: 10vh;
-    font-family: 'Roboto Slab', serif;
-    background-color: transparent;
-    color: white;
-    border: 0.4vh solid white;
-    border-radius: 2rem;
-    padding: 0.5rem 1.5rem;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
+
+
+
+
+
+
+.fachada {
+    width: 100%;
+    height: 42.5vh;
+    display: block;
+
 }
 
-.sobr:hover {
-    background-color: white;
-    color: black;
+.fachada-sombra {
+    position: relative;
+    max-height: 42.5vh;
+    overflow: hidden;
+}
+
+.fachada-sombra::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgb(0, 45, 107, 0.65);
+    pointer-events: none;
+    mix-blend-mode: multiply;
 }
