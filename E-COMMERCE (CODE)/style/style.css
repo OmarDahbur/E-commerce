@@ -22,7 +22,7 @@ header {
 
 .logo {
 
-    height: 15vh;
+    height: 20vh;
     width: auto;
 
 
@@ -43,6 +43,7 @@ header {
 
 
 .hom,
+.prod,
 .contat,
 .sobr,
 .iniciar,
@@ -63,6 +64,7 @@ header {
 .contat:hover,
 .sobr:hover,
 .iniciar:hover,
+.prod:hover,
 .cadastrar:hover {
     background-color: white;
     color: black;
@@ -76,14 +78,14 @@ header {
 
 .fachada {
     width: 100%;
-    height: 42.5vh;
+    height: 85vh;
     display: block;
 
 }
 
 .fachada-sombra {
     position: relative;
-    max-height: 42.5vh;
+    max-height: 85vh;
     overflow: hidden;
 }
 
@@ -94,4 +96,52 @@ header {
     background: rgb(0, 45, 107, 0.65);
     pointer-events: none;
     mix-blend-mode: multiply;
+    z-index: 0;
+}
+
+.card {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    color: black;
+    padding: 2rem 3rem;
+    border-radius: 1.5rem;
+    box-shadow: 0 0 2vw rgba(0, 0, 0, 0.3);
+    text-align: center;
+    font-family: 'Roboto Slab', serif;
+    z-index: 1;
+}
+
+.card h1 {
+    margin: 0 0 1rem;
+    font-size: 2rem;
+}
+
+.card .cadastrar {
+    width: 100%;
+    max-width: 20rem;
+    margin: 1rem auto 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background-color: black;
+    color: white;
+    border: 1vw solid #ccc;
+    font-size: 1rem;
+    padding: 0.6rem 1.5rem;
+    border-radius: 0.6rem;
+    box-shadow: 0 0.2vh 0.4vh rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: backgroud-color 0.3s ease, box-shadow 0.3s ease;
+    font-family: 'Roboto Slab', serif;
+}
+
+.card .cadastrar:hover {
+    background-color: white;
+    color: black;
+
 }
