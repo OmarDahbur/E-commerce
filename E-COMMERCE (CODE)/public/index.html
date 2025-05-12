@@ -4,27 +4,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
     <title>ByNforce Jeans</title>
 </head>
 
 <body>
+    <header>
 
-    <nav>
-        <img src="../E-commerce code/assets/LOGOOFCNFORCE.png" alt="logo" class="logo">
-    </nav>
+        <img src="../assets/logo.png" alt="logo" class="logo">
 
-    <nav>
-        <a>Home</a>
-    </nav>
+        <nav class="nav-botoes">
+            <div class="home"></div>
 
-    <nav>
-        <a>Login</a>
-    </nav>
 
-    <nav>
-        <a>Sobre nós</a>
-    </nav>
+            <div class="registros">
+                <div class="login">
+                    <button class="iniciar" onclick="login()">Iniciar Sessão</button>
+                </div>
+
+                <div class="cadastro">
+                    <button class="cadastrar" onclick="cadastro()">Cadastre-se</button>
+                </div>
+            </div>
+
+
+            <div class="sobre">
+                <button class="sobr" onclick="sobre()">Sobre nós</button>
+            </div>
+        </nav>
+    </header>
 
 </body>
 
