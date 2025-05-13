@@ -8,8 +8,7 @@
 
     <title>ByNforce Jeans | Cadastro</title>
 
-    <link rel="stylesheet" href="../style/cadastro.css" />
-    <link rel="icon" href="./assets/icon/favicon2.ico" />
+    <link rel="stylesheet" href="../public/css/cadastro.css" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
 
 </head>
@@ -17,37 +16,48 @@
 <body>
     <header>
 
-        <img src="../assets/logo.png" alt="logo" class="logo">
+        <img src="../public/assets/logo.png" alt="logo" class="logo">
 
         <div class="direita">
             <button class="iniciar" onclick="login()">Iniciar Sessão</button>
         </div>
     </header>
 
-    <div class="card">
-        <h2>Bem-vindo!</h2>
-        <div class="campo">
-            <span>Nome:</span>
-            <input id="nome_input" type="text" placeholder="Seu nome" />
-        </div>
-
-        <div class="campo">
-            <span>E-mail:</span>
-            <input id="email_input" type="text" placeholder="meuemail@provedor.com" />
+    <div class="cadastro">
+        <div class="fotocc">
+            <img src="../public/assets/Img para cadastro.webp" alt="foto">
         </div>
 
 
-        <div class="campo">
-            <span>Senha:</span>
-            <input id="senha_input" type="password" placeholder="******" />
-        </div>
+        <div class="card">
 
-        <div class="campo">
-            <span>Confirmação da Senha:</span>
-            <input id="confirmacao_senha_input" type="password" placeholder="******" />
+            <h2>Bem-vindo!</h2>
+            <div class="campo">
+                <span>Nome:</span>
+                <input id="nome_input" type="text" placeholder="Seu nome" />
+            </div>
+
+            <div class="campo">
+                <span>E-mail:</span>
+                <input id="email_input" type="text" placeholder="meuemail@provedor.com" />
+            </div>
+
+
+            <div class="campo">
+                <span>Senha:</span>
+                <input id="senha_input" type="password" placeholder="******" />
+            </div>
+
+            <div class="campo">
+                <span>Confirmação da Senha:</span>
+                <input id="confirmacao_senha_input" type="password" placeholder="******" />
+            </div>
+            <button class="botao" onclick="cadastrar()">Cadastrar</button>
+
         </div>
-        <button class="botao" onclick="cadastrar()">Cadastrar</button>
     </div>
+
+
 
     <!--footer inicio-->
     <div class="footer">
