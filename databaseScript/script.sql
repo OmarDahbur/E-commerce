@@ -25,7 +25,7 @@ CREATE TABLE vendas (
   fkCliente INT,
   idVenda INT,
   qtdVendas INT NOT NULL,
-  dtVenda DATETIME NOT NULL,
+  dtVenda DATETIME NOT NULL DEFAULT current_timestamp,
   CONSTRAINT fkComposta PRIMARY KEY (idVenda, fkCliente, fkProduto),
   CONSTRAINT fkVendasCliente FOREIGN KEY (fkCliente) REFERENCES cliente(idCliente),
   CONSTRAINT fkVendasProduto FOREIGN KEY (fkProduto) REFERENCES produto(idProduto));
