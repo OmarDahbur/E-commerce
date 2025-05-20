@@ -29,4 +29,9 @@ CREATE TABLE vendas (
   CONSTRAINT fkComposta PRIMARY KEY (idVenda, fkCliente, fkProduto),
   CONSTRAINT fkVendasCliente FOREIGN KEY (fkCliente) REFERENCES cliente(idCliente),
   CONSTRAINT fkVendasProduto FOREIGN KEY (fkProduto) REFERENCES produto(idProduto));
+  
+SELECT * FROM produto;
+SELECT * FROM cliente;
+SELECT * FROM vendas;
+
 
