@@ -7,6 +7,7 @@ function cadastrar() {
     var confirmacaoSenhaVar = confirmacao_senha_input.value;
 
 
+
     if (
         nomeVar == "" ||
         emailVar == "" ||
@@ -16,32 +17,30 @@ function cadastrar() {
 
         alert(`Preencha todos os campos corretamente!`)
 
-        finalizarAguardar();
         return false;
     } else if (nomeVar.length <= 2) {
         alert(`Não existe nome assim, seu nome precisa ter mais de 2 caractere`)
 
-        finalizarAguardar();
+
         return false;
     } else if (!emailVar.includes('.com') || !emailVar.includes('@')) {
 
         alert(`Não existe email sem @ ou .com, preencha seu email corretamente!`)
 
-        finalizarAguardar();
+
         return false;
     } else if (senhaVar.length < 8) {
 
         alert(`Senha fraca, tenha pelo menos 8 caracteres!`)
 
-        finalizarAguardar();
+
         return false;
     } else if (senhaVar != confirmacaoSenhaVar) {
         alert(`A confirmação está diferente da senha...`)
 
-        finalizarAguardar();
         return false;
     } else {
-        setInterval(sumirMensagem, 5000);
+        setInterval(5000);
     }
 
 
@@ -56,7 +55,7 @@ function cadastrar() {
             // Agora vá para o arquivo routes/usuario.js
             nomeServer: nomeVar,
             emailServer: emailVar,
-            senhaServer: senhaVar
+            senhaServer: senhaVar,
         }),
     })
         .then(function (resposta) {
@@ -74,19 +73,19 @@ function cadastrar() {
                 }, "2000");
 
                 limparFormulario();
-                finalizarAguardar();
+
             } else {
                 throw "Houve um erro ao tentar realizar o cadastro!";
             }
         })
         .catch(function (resposta) {
             console.log(`#ERRO: ${resposta}`);
-            finalizarAguardar();
+
         });
 
     return false;
 }
 
-function sumirMensagem() {
-    cardErro.style.display = "none";
-}
+// function sumirMensagem() {
+//     cardErro.style.display = "none";
+// }

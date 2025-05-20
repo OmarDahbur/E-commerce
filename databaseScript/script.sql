@@ -17,7 +17,7 @@ CREATE TABLE cliente (
   nomeCompleto VARCHAR(45) NULL,
   email VARCHAR(45) NULL,
   senha VARCHAR(45) NULL,
-  dtCadastro DATETIME NULL
+  dtCadastro DATETIME default current_timestamp
   );
 
 CREATE TABLE vendas (
@@ -33,5 +33,3 @@ CREATE TABLE vendas (
 SELECT * FROM produto;
 SELECT * FROM cliente;
 SELECT * FROM vendas;
-
-

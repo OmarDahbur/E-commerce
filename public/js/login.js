@@ -1,5 +1,5 @@
 function entrar() {
-    aguardar();
+
 
     var emailVar = email_input.value;
     var senhaVar = senha_input.value;
@@ -8,11 +8,11 @@ function entrar() {
 
         alert(`Preencha todos os campos corretamente!`)
 
-        finalizarAguardar();
+
         return false;
     }
     else {
-        setInterval(sumirMensagem, 5000)
+        setInterval(5000)
     }
 
     console.log("FORM LOGIN: ", emailVar);
@@ -53,7 +53,7 @@ function entrar() {
 
             resposta.text().then(texto => {
                 console.error(texto);
-                finalizarAguardar(texto);
+
             });
         }
 
@@ -64,6 +64,6 @@ function entrar() {
     return false;
 }
 
-function sumirMensagem() {
-    cardErro.style.display = "none"
-}
+// function sumirMensagem() {
+//    cardErro.style.display = "none"
+// }
