@@ -31,5 +31,5 @@ CREATE TABLE vendas (
   CONSTRAINT fkVendasProduto FOREIGN KEY (fkProduto) REFERENCES produto(idProduto));
   
 SELECT * FROM produto;
-SELECT * FROM cliente;
+SELECT * FROM cliente;	
 SELECT * FROM vendas;
