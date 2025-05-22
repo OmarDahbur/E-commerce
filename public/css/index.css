@@ -23,6 +23,7 @@ header {
 .logo {
     height: 20vh;
     width: auto;
+    cursor: pointer;
 }
 
 .centro {
