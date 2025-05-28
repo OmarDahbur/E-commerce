@@ -133,8 +133,7 @@ header {
     height: 40vh;
     border-radius: 1rem;
     border: 1px solid black;
-    object-fit: cover;
-
+    object-fit: contain;
 }
 
 .progresso {
@@ -147,8 +146,9 @@ header {
     font-size: 1.5rem;
     letter-spacing: 1px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    align-self: flex-start;
-    margin-top: 15px;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 .topo {
@@ -160,4 +160,5 @@ header {
     max-width: 1200px;
     padding: 0 2vw;
     box-sizing: border-box;
+    position: relative;
 }
