@@ -1,12 +1,15 @@
 
+
 function cadastrar() {
 
     var nomeVar = nome_input.value;
     var emailVar = email_input.value;
     var senhaVar = senha_input.value;
     var confirmacaoSenhaVar = confirmacao_senha_input.value;
-
-
+    var CAPSLOCK = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+    var lowercase = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+    var numeros = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
+    var especiais = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '=', '+', '[', ']', '{', '}', '|', ';', ':', '"', ',', '<', '.', '>', '?'];
 
     if (
         nomeVar == "" ||
@@ -19,7 +22,7 @@ function cadastrar() {
 
         return false;
     } else if (nomeVar.length <= 2) {
-        alert(`Não existe nome assim, seu nome precisa ter mais de 2 caractere`)
+        alert(`Não existe nome assim, seu nome precisa ter mais de 2 caracteres`)
 
 
         return false;
@@ -35,7 +38,52 @@ function cadastrar() {
 
 
         return false;
-    } else if (senhaVar != confirmacaoSenhaVar) {
+
+    } else {
+        var maiuscula = 0;
+        var minuscula = 0;
+        var ternumeros = 0;
+        var terespecial = 0;
+
+        for (let i = 0; i < senhaVar.length; i++) {
+            if (CAPSLOCK.includes(senhaVar[i])) {
+                maiuscula++;
+            } else if (lowercase.includes(senhaVar[i])) {
+                minuscula++;
+
+            } else if (numeros.includes(senhaVar[i])) {
+                ternumeros++;
+
+            } else if (especiais.includes(senhaVar[i])) {
+                console.log(`Caracterece especial encontrado: ${senhaVar[i]}`)
+                terespecial++;
+            }
+        }
+
+        var erro_msg = ``;
+
+        if (maiuscula == 0) {
+            erro_msg += `Pelo menos uma letra MAIÚSCULA. \n`
+        }
+        if (minuscula == 0) {
+            erro_msg += `Pelo menos uma letra minúscula. \n`
+        }
+        if (ternumeros == 0) {
+            erro_msg += `Pelo menos um número. \n`
+        }
+        if (especiais == 0) {
+            console.log(`Caracterece não encontrado!!!`)
+            erro_msg += `Pelo menos um caractere especial. \n`
+        }
+
+        if (erro_msg !== ``) {
+            alert(`Sua senha está FRACA. Ela precisa ter: \n ${erro_msg}`);
+            return false;
+        }
+
+
+    } {
+    } if (senhaVar != confirmacaoSenhaVar) {
         alert(`A confirmação está diferente da senha...`)
 
         return false;
