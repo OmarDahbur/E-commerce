@@ -42,7 +42,7 @@ function entrar() {
 
 
                 setTimeout(function () {
-                    window.location = "./sobre.html";
+                    window.location = "./produtos.html";
                 }, 1000); // apenas para exibir o loading
 
             });
@@ -50,6 +50,7 @@ function entrar() {
         } else {
 
             console.log("Houve um erro ao tentar realizar o login!");
+            alert(`Email ou senha incorretos!`);
 
             resposta.text().then(texto => {
                 console.error(texto);
