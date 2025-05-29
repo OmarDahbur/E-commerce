@@ -11,6 +11,8 @@ function cadastrar() {
     var numeros = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
     var especiais = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '=', '+', '[', ']', '{', '}', '|', ';', ':', '"', ',', '<', '.', '>', '?'];
 
+
+
     if (
         nomeVar == "" ||
         emailVar == "" ||
@@ -55,7 +57,6 @@ function cadastrar() {
                 ternumeros++;
 
             } else if (especiais.includes(senhaVar[i])) {
-                console.log(`Caracterece especial encontrado: ${senhaVar[i]}`)
                 terespecial++;
             }
         }
@@ -71,8 +72,7 @@ function cadastrar() {
         if (ternumeros == 0) {
             erro_msg += `Pelo menos um número. \n`
         }
-        if (especiais == 0) {
-            console.log(`Caracterece não encontrado!!!`)
+        if (terespecial == 0) {
             erro_msg += `Pelo menos um caractere especial. \n`
         }
 
