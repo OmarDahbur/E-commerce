@@ -110,6 +110,7 @@ header {
     font-family: 'Roboto Slab', serif;
     cursor: pointer;
     transition: 0.3s;
+    margin-top: -30px;
 
 }
 
