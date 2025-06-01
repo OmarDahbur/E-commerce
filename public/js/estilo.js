@@ -16,8 +16,10 @@ function selecionar(estilo) {
 
 function finalizar() {
     if (estiloSele) {
-        window.location.href='./dashboard.html'
+
+        localStorage.setItem('estilo', estiloSele);
+        window.location.href='./dashboard.html';
     } else {
-        alert(`Primeiro selecione um estilo antes de finalizar.`)
+        alert(`Primeiro selecione um estilo antes de finalizar.`);
     }
 }

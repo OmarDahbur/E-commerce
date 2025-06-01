@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="css/dashboard.css" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
-
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="shortcut icon" href="assets/LOGOOFCNFORCEPNG.png" type="image/x-icon">
 </head>
 <header>
@@ -24,3 +24,30 @@
         <button class="sobr" onclick="window.location.href='./sobre.html'">Sobre nós</button>
     </nav>
 </header>
+
+<body>
+    <div class="container">
+        <div class="topo">
+            <h1>Parabéns, você concluiu as três etapas!</h1>
+            <p>Veja seu resumo abaixo</p>
+        </div>
+        <div class="kpis">
+            <div class="kpi">
+                <h2>Categoria Favorita</h2>
+                <p id="categoriafav">Calça</p>
+            </div>
+            <div class="kpi">
+                <h2>Tom Preferido</h2>
+                <p id="tom">Escuro</p>
+            </div>
+            <div class="kpi">
+                <h2>Estilo Ideal</h2>
+            </div>
+        </div>
+        <div class="grafico">
+            <canvas id="graficesti"></canvas>
+        </div>
+    </div>
+</body>
+
+<script src="js/dashboard.js"></script>
