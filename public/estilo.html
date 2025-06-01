@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>ByNforce Jeans | Estilo</title>
+    <title>ByNforce Jeans | Estilos</title>
 
     <link rel="stylesheet" href="css/estilo.css" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
@@ -39,23 +39,25 @@
 
         <div class="botoes">
             <div class="foto">
-                <button class="but">Streetwear</button>
+                <button class="but" id="Streetwear" onclick="selecionar('Streetwear')">Streetwear</button>
                 <img src="assets/stretwear.png" alt="Streetwear" class="imgc">
             </div>
             <div class="foto">
-                <button class="but">Casual</button>
+                <button class="but" id="Casual" onclick="selecionar('Casual')">Casual</button>
                 <img src="assets/casual.png" alt="Casual" class="imgc">
             </div>
             <div class="foto">
-                <button class="but">Social</button>
+                <button class="but" id="Social" onclick="selecionar('Social')">Social</button>
                 <img src="assets/social.png" alt="Social" class="imgc">
             </div>
             <div class="foto">
-                <button class="but">Básico</button>
+                <button class="but" id="Basico" onclick="selecionar('Basico')">Básico</button>
                 <img src="assets/basico.png" alt="Básico" class="imgc">
             </div>
         </div>
-        <button class="avancar">Avançar</button>
+        <button class="avancar" id="avancar" onclick="finalizar()">Finalizar Interação</button>
     </div>
 </body>
 </body>
+
+<script src="js/estilo.js"></script>

@@ -162,3 +162,8 @@ header {
     box-sizing: border-box;
     position: relative;
 }
+
+.selecionado {
+    background-color: black;
+    color: white;
+}
