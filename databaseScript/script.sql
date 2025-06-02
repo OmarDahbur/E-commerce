@@ -3,13 +3,9 @@ USE bynforcejeans;
 
 CREATE TABLE produto (
   idProduto INT PRIMARY KEY AUTO_INCREMENT,
-  descricao VARCHAR(45)  NOT NULL,
-  referencia CHAR(3) NOT NULL,
-  valor FLOAT NOT NULL,
-  categoria VARCHAR(15) NOT NULL,
-  genero CHAR(1) NOT NULL,
-  estoque INT NOT NULL,
-  statusProduto VARCHAR(10) CHECK (statusProduto in ('Ativado' , 'Desativado'))
+  categoria VARCHAR(10) NOT NULL,
+  tom VARCHAR(6) NOT NULL,
+  estilo VARCHAR(10) NOT NULL
   );
 
 CREATE TABLE cliente (
