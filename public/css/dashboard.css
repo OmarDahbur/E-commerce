@@ -88,7 +88,7 @@ header {
     padding: 20px;
     border-radius: 12px;
     width: 18vw;
-    box-shadow: 0 0 10px rgba(0, 0 ,0, 0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .kpi h2 {
@@ -111,4 +111,14 @@ header {
     margin: 0 auto;
 }
 
+.grafico {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
 
+canvas {
+    max-width: 600px;
+    width: 100%;
+}
