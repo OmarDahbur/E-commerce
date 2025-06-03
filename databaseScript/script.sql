@@ -16,16 +16,13 @@ CREATE TABLE cliente (
   dtCadastro DATETIME default current_timestamp
   );
 
-CREATE TABLE vendas (
+CREATE TABLE preferencia (
   fkProduto INT,
   fkCliente INT,
-  idVenda INT,
-  qtdVendas INT NOT NULL,
-  dtVenda DATETIME NOT NULL DEFAULT current_timestamp,
-  CONSTRAINT fkComposta PRIMARY KEY (idVenda, fkCliente, fkProduto),
-  CONSTRAINT fkVendasCliente FOREIGN KEY (fkCliente) REFERENCES cliente(idCliente),
-  CONSTRAINT fkVendasProduto FOREIGN KEY (fkProduto) REFERENCES produto(idProduto));
+  idPreferencia INT,
+  dtEscolha DATETIME NOT NULL DEFAULT current_timestamp,
+  CONSTRAINT fkComposta PRIMARY KEY (idPreferencia, fkCliente, fkProduto),
+  CONSTRAINT fkPreferenciaCliente FOREIGN KEY (fkCliente) REFERENCES cliente(idCliente),
+  CONSTRAINT fkPreferenciaProduto FOREIGN KEY (fkProduto) REFERENCES produto(idProduto));
   
-SELECT * FROM produto;
-SELECT * FROM cliente;	
-SELECT * FROM vendas;
+  

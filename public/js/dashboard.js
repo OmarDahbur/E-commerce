@@ -1,14 +1,37 @@
+document.addEventListener("DOMContentLoaded", function () {
+    const idCliente = sessionStorage.ID_CLIENTE;
+
+    fetch(`/dashboard/usuario/${idCliente}`).then(res => res.json())
+        .then(preferencias => {
+            if (preferencias.length > 0) {
+                const { categoria, tom, estilo } = preferencias[0];
+                document.getElementById('categoriafav').innerText = categoria;
+                document.getElementById('tom').innerText = tom;
+                document.getElementById('estiloideal').textContent = estilo;
+
+                montarGrafico(categoria, tom, estilo);
+            } else {
+                alert(`Você ainda não selecionou suas preferências.`);
+            }
+        })
+        .catch(erro => {
+            console.error('Erro ao buscar dados da API:', erro);
+        });
+
+});
 
 
-const categoria = localStorage.getItem('categoria');
-const tom = localStorage.getItem('tom');
-const estilo = localStorage.getItem('estilo');
+function montarGrafico(categoria, tom, estilo) {
+    const ctx = document.getElementById('graficesti').getContext('2d');
 
-document.getElementById('categoriafav').innerText = categoria;
-document.getElementById('tom').innerText = tom;
-document.getElementById('estiloideal').textContent = estilo;
+    fetch(`/dashboard/distribuicao`).then(res => res.json()).then(dados => {
+        const categorias = {};
+        const tons = {};
+        const estilos = {};
+        
+    })
+}
 
-const ctx = document.getElementById('graficesti').getContext('2d');
 
 const todos = {
     'Categoria Favorita': { 'Calça': 40, 'Jaqueta': 25, 'Camisa': 35 },
