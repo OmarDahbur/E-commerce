@@ -1,20 +1,21 @@
 var preferenciaModel = require("../models/preferenciaModel");
 
 function salvarPreferencias(req, res) {
-    const { idCliente, categoria, tom, estilo} = req.body;
+    var idCliente = req.body.idCliente;
+    var categoria = req.body.categoria;
+    var tom = req.body.tom;
+    var estilo = req.body.estilo;
 
-        if (!idCliente || !categoria || !tom || !estilo) {
-            return res.status(400).send(`Dados incompletos para salvar preferência.`);
-        }
+    if (!idCliente || !categoria || !tom || !estilo) {
+        return res.status(400).send("Todos os campos são obrigatórios.");
+    }
 
-
-    preferenciaModel.cadastrarPreferencias(idCliente , categoria, tom, estilo).then(resultado => {
-        res.status(200).json({ mensagem: "Preferência salva com sucesso!"});
-    }).catch(erro => {
-        console.log(erro);
+    preferenciaModel.salvarPreferencias(idCliente, categoria, tom, estilo).then((resultado) =>
+    res.json(resultado)).catch((erro) => {
         console.log("Erro ao salvar preferências:", erro.sqlMessage);
         res.status(500).json(erro.sqlMessage);
     });
+    
 }
 
 module.exports = {

@@ -1,6 +1,6 @@
 var database = require("../database/config");
 
-function cadastrarPreferencias(idCliente, categoria, tom, estilo) {
+function salvarPreferencias(idCliente, categoria, tom, estilo) {
 
     var instrucaoSql = `
     INSERT INTO preferencia (fkCliente, categoria, tom, estilo) VALUES
@@ -11,5 +11,5 @@ function cadastrarPreferencias(idCliente, categoria, tom, estilo) {
 }
 
 module.exports = {
-   cadastrarPreferencias
+   salvarPreferencias
 };

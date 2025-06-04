@@ -17,7 +17,7 @@ function selecionar(estilo) {
 function finalizar() {
 
     if (estiloSele) {
-        const idCliente = sessionStorage.ID_CLIENTE;
+        const idCliente = sessionStorage.ID_USUARIO;
         const categoria = sessionStorage.CATEGORIA_ESCOLHIDA;
         const tom = sessionStorage.TOM_ESCOLHIDO;
 

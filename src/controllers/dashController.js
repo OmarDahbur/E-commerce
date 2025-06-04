@@ -1,5 +1,7 @@
 var dashModel = require("../models/dashModel");
 
+
+
 function buscarPreferenciasUsuario(req, res) {
 
     var idCliente = req.params.idCliente;
@@ -35,5 +37,5 @@ function buscarDistribuicaoGeral(req, res) {
 
 module.exports = {
     buscarPreferenciasUsuario,
-    buscarDistribuicaoGeral
+    buscarDistribuicaoGeral,
 };
