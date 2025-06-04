@@ -6,11 +6,11 @@ function salvarPreferencias(req, res) {
     var tom = req.body.tom;
     var estilo = req.body.estilo;
 
-    if (!idCliente || !categoria || !tom || !estilo) {
+    if (!categoria || !tom || !estilo || !idCliente) {
         return res.status(400).send("Todos os campos são obrigatórios.");
     }
 
-    preferenciaModel.salvarPreferencias(idCliente, categoria, tom, estilo).then((resultado) =>
+    preferenciaModel.salvarPreferencias(categoria, tom, estilo, idCliente).then((resultado) =>
     res.json(resultado)).catch((erro) => {
         console.log("Erro ao salvar preferências:", erro.sqlMessage);
         res.status(500).json(erro.sqlMessage);

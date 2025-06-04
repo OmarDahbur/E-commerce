@@ -20,8 +20,9 @@ function finalizar() {
         const idCliente = sessionStorage.ID_USUARIO;
         const categoria = sessionStorage.CATEGORIA_ESCOLHIDA;
         const tom = sessionStorage.TOM_ESCOLHIDO;
+        const estilo = estiloSele;
 
-        if (!estiloSele || !categoria || !tom || !idCliente) {
+        if (!categoria || !tom || !idCliente || !idCliente) {
             alert(`Você precisa completar todas as etapas antes de finalizar.`);
             return;
         }
@@ -34,7 +35,7 @@ function finalizar() {
                 idCliente,
                 categoria,
                 tom,
-                estilo: estiloSele
+                estilo
             })
         }).then(res => {
             if (res.ok) {

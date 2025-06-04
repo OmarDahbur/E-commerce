@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 const { categoria, tom, estilo } = preferencias[0];
                 document.getElementById('categoriafav').innerText = categoria;
                 document.getElementById('tom').innerText = tom;
-                document.getElementById('estiloideal').textContent = estilo;
+                document.getElementById('estiloideal').innerText = estilo;
 
                 montarGrafico(categoria, tom, estilo);
             } else {
