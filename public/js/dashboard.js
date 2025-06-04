@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", function () {
     const idCliente = sessionStorage.ID_CLIENTE;
 
@@ -29,51 +30,63 @@ function montarGrafico(categoria, tom, estilo) {
         const tons = {};
         const estilos = {};
         
-    })
-}
 
+        for (let i = 0; i < dados.length; i++) {
+            let item = dados[i];
 
-const todos = {
-    'Categoria Favorita': { 'Calça': 40, 'Jaqueta': 25, 'Camisa': 35 },
-    'Tom Preferido': { 'Claro': 45, 'Escuro': 55 },
-    'Estilo Ideal': { 'Streetwear': 30, 'Casual': 40, 'Social': 15, 'Basico': 15 }
-};
-
-const dadosusuarios = {
-    'Categoria Favorita': categoria,
-    'Tom Preferido': tom,
-    'Estilo Ideal': estilo
-};
-
-const labels = ['Categoria Favorita', 'Tom Preferido', 'Estilo Ideal'];
-
-const datatds = labels.map(label => todos[label][dadosusuarios[label]] || 0);
-const datausu = [1, 1, 1];
-
-new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: labels,
-        datasets: [
-            {
-                label: 'Você',
-                data: datausu,
-                backgroundColor: '#FFA500'
-            },
-            {
-                label: 'Todos os Usuários',
-                data: datatds,
-                backgroundColor: '#5555FF'
+            if (!categorias[item.categoria]) {
+                categorias[item.categoria] = 0;
             }
-        ]
-    },
-    options: {
-        responsive: true,
-        plugins: {
-            title: {
-                display: true,
-                text: 'Você vs Todos os Usuários'
+            categorias[item.categoria] += item.total;
+
+            if (!tons[item.tom]) {
+                tons[item.tom] = 0;
+            }
+            tons[item.tom] += item.total;
+
+            if (!estilos[item.estilo]) {
+                estilos[item.estilo] = 0;
+            }
+            estilos[item.estilo] += item.total;
+
+            
+        }
+    
+    const labels = ['Categoria Favorita', 'Tom Preferido', 'Estilo Ideal'];
+    const dadosUsuario = [1,1,1];
+    const dadosTodos = [
+        categorias[categoria] || 0,
+        tons[tom] || 0,
+        estilos[estilo] || 0
+    ];
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [
+                {
+                    label: 'Você',
+                    data: dadosUsuario,
+                    backgroundColor: '#FFA500'
+                },
+                {
+                    label: 'Todos os Usuários',
+                    data: dadosTodos,
+                    backgroundColor: '#5555FF'
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Você vs Todos os Usuários'
+                }
             }
         }
-    }
+    });
 });
+}
+

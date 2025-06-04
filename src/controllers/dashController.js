@@ -1,12 +1,12 @@
 var dashModel = require("../models/dashModel");
 
-function buscarDadosCliente(req, res) {
+function buscarPreferenciasUsuario(req, res) {
 
     var idCliente = req.params.idCliente;
 
-    
 
-    dashModel.buscarPreferenciasDoCliente(idCliente).then(function (resultado) {
+
+    dashModel.buscarPreferenciasUsuario(idCliente).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
@@ -19,6 +19,21 @@ function buscarDadosCliente(req, res) {
     });
 }
 
-module.exports = {
-    buscarDadosCliente
+function buscarDistribuicaoGeral(req, res) {
+    dashModel.buscarDistribuicaoGeral().then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhuma distribuição encontrada!");
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Erro ao buscar distribuição geral:", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
 }
+
+module.exports = {
+    buscarPreferenciasUsuario,
+    buscarDistribuicaoGeral
+};

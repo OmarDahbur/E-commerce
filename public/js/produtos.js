@@ -1,5 +1,5 @@
 function selecionarCategoria(categoria, proxpag) {
-    localStorage.setItem('categoria', categoria);
+    sessionStorage.setItem('CATEGORIA_ESCOLHIDA', categoria);
     window.location.href= proxpag;
 }
 

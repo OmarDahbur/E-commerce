@@ -1,21 +1,23 @@
 var database = require("../database/config");
 
-function buscarPreferenciasDoCliente(idCliente) {
+function buscarPreferenciasUsuario(idCliente) {
 
     var instrucaoSql = `
-    SELECT 
-       p.categoria, p.tom, p.estilo,
-       COUNT(*) AS totalCompras FROM vendas v
-       JOIN produto p ON v.fkProduto = p.idProduto
-       WHERE v.fkCliente = ${idCliente}
-       GROUP BY p.categoria, p.tom, p.estilo
-       ORDER BY totalCompras DESC
-       LIMIT 3`;
+    SELECT categoria, tom, estilo FROM preferencia WHERE fkCliente = ${idCliente};`;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
 
+function buscarDistribuicaoGeral() {
+    var instrucaoSql = `SELECT categoria, tom, estilo, COUNT(*) AS total
+    FROM preferencia
+    GROUP BY categoria, tom, estilo;`;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 module.exports = {
-    buscarPreferenciasDoCliente
+    buscarPreferenciasUsuario,
+    buscarDistribuicaoGeral
 };

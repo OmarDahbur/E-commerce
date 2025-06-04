@@ -15,11 +15,42 @@ function selecionar(estilo) {
 }
 
 function finalizar() {
-    if (estiloSele) {
 
-        localStorage.setItem('estilo', estiloSele);
-        window.location.href='./dashboard.html';
-    } else {
-        alert(`Primeiro selecione um estilo antes de finalizar.`);
+    if (estiloSele) {
+        const idCliente = sessionStorage.ID_CLIENTE;
+        const categoria = sessionStorage.CATEGORIA_ESCOLHIDA;
+        const tom = sessionStorage.TOM_ESCOLHIDO;
+
+        if (!estiloSele || !categoria || !tom || !idCliente) {
+            alert(`Você precisa completar todas as etapas antes de finalizar.`);
+            return;
+        }
+        fetch('/dashboard/preferencias', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                idCliente,
+                categoria,
+                tom,
+                estilo: estiloSele
+            })
+        }).then(res => {
+            if (res.ok) {
+                alert(`Preferências salvas com sucesso!`);
+                window.location.href='./dashboard.html';
+            } else {
+                alert(`Erro ao salvar preferências.`);
+            }
+        }).catch(err => {
+            console.error("Erro ao enviar preferências:", err);
+            alert(`Erro de conexão com o servidor.`);
+        });
     }
-}
+    }
+   
+
+   
+
+    

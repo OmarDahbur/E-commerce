@@ -1,4 +1,4 @@
 function selecionarTom(tom) {
-    localStorage.setItem('tom', tom);
+    sessionStorage.setItem('TOM_ESCOLHIDO', tom);
     window.location.href='./estilo.html';
 }
