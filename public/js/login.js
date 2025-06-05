@@ -36,9 +36,9 @@ function entrar() {
             resposta.json().then(json => {
                 console.log(json);
                 console.log(JSON.stringify(json));
-                sessionStorage.EMAIL_USUARIO = json.email;
-                sessionStorage.NOME_USUARIO = json.nomeCompleto;
-                sessionStorage.ID_CLIENTE = json.idCliente;
+                sessionStorage.setItem("EMAIL_USUARIO" , json.email);
+                sessionStorage.setItem("NOME_USUARIO" ,json.nomeCompleto);
+                sessionStorage.setItem("ID_CLIENTE" , json.idCliente);
 
 
                 setTimeout(function () {

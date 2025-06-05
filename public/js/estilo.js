@@ -17,16 +17,16 @@ function selecionar(estilo) {
 function finalizar() {
 
     if (estiloSele) {
-        const idCliente = sessionStorage.ID_USUARIO;
-        const categoria = sessionStorage.CATEGORIA_ESCOLHIDA;
-        const tom = sessionStorage.TOM_ESCOLHIDO;
+        const idCliente = sessionStorage.getItem("ID_CLIENTE");
+        const categoria = sessionStorage.getItem("CATEGORIA_ESCOLHIDA");
+        const tom = sessionStorage.getItem("TOM_ESCOLHIDO");
         const estilo = estiloSele;
 
-        if (!categoria || !tom || !idCliente || !idCliente) {
+        if (!categoria || !tom || !idCliente) {
             alert(`Você precisa completar todas as etapas antes de finalizar.`);
             return;
         }
-        fetch('/dashboard/preferencias', {
+        fetch('/preferencias/salvar', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

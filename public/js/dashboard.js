@@ -1,6 +1,7 @@
 
 document.addEventListener("DOMContentLoaded", function () {
-    const idCliente = sessionStorage.ID_CLIENTE;
+    const idCliente = sessionStorage.getItem("ID_CLIENTE");
+    console.log("ID do cliente:", idCliente);
 
     fetch(`/dashboard/usuario/${idCliente}`).then(res => res.json())
         .then(preferencias => {
