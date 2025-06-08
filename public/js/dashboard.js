@@ -37,13 +37,33 @@ function montarGrafico(categoria, tom, estilo) {
         console.log(estilos[0].total)
 
         const labels = ['Categoria Favorita', 'Tom Preferido', 'Estilo Ideal'];
-        const dadosUsuario = [1, 1, 1];
+      
+        let totalCategoria = 0;
+        for (let i = 0; i < categorias.length; i++) {
+            if (categorias[i].categoria === categoria) {
+                totalCategoria = categorias[i].total;
+            }
+            
+        }
 
-        const dadosTodos = [
-            categorias[0].total,
-            tons[0].total,
-            estilos[0].total
-        ];
+        let totalTom = 0;
+        for (let i = 0; i < tons.length; i++) {
+            if (tons[i].tom === tom) {
+                totalTom = tons[i].total;
+            }
+            
+        }
+        let totalEstilo = 0;
+        for (let i = 0; i < estilos.length; i++) {
+            if (estilos[i].estilo === estilo) {
+                totalEstilo = estilos[i].total;
+            }
+            
+        }
+
+        const dadosTodos = [totalCategoria, totalTom, totalEstilo];
+
+        const dadosUsuario = [1, 1, 1];
 
         new Chart(ctx, {
             type: 'bar',
