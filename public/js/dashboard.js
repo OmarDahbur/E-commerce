@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () {
+function buscarDados() {
     const idCliente = sessionStorage.getItem("ID_CLIENTE");
     console.log("ID do cliente:", idCliente);
 
@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 document.getElementById('estiloideal').innerText = estilo;
 
                 montarGrafico(categoria, tom, estilo);
+                montarRanking();
             } else {
                 alert(`Você ainda não selecionou suas preferências.`);
             }
@@ -19,51 +20,30 @@ document.addEventListener("DOMContentLoaded", function () {
             console.error('Erro ao buscar dados da API:', erro);
         });
 
-});
+};
+
 
 
 function montarGrafico(categoria, tom, estilo) {
     const ctx = document.getElementById('graficesti').getContext('2d');
 
     fetch(`/dashboard/distribuicao`).then(res => res.json()).then(dados => {
-        const categorias = {};
-        const tons = {};
-        const estilos = {};
+        const categorias = dados.categoria;
+        const tons = dados.tom;
+        const estilos = dados.estilo;
 
-
-        for (let i = 0; i < dados.length; i++) {
-            let item = dados[i];
-
-            if (categorias[item.categoria] === undefined) {
-                categorias[item.categoria] = item.total;
-            } else {
-                categorias[item.categoria] += item.total;
-            }
-
-            if (tons[item.tom] === undefined) {
-                tons[item.tom] = item.total;
-            } else {
-                tons[item.tom] += item.total;
-            }
-
-            if (estilos[item.estilo] === undefined) {
-                estilos[item.estilo] = item.total;
-            } else {
-                estilos[item.estilo] += item.total;
-            }
-
-        }
+        console.log(categorias[0].total)
+        console.log(tons[0].total)
+        console.log(estilos[0].total)
 
         const labels = ['Categoria Favorita', 'Tom Preferido', 'Estilo Ideal'];
         const dadosUsuario = [1, 1, 1];
 
         const dadosTodos = [
-            categorias[categoria] || 0,
-            tons[tom] || 0,
-            estilos[estilo] || 0
+            categorias[0].total,
+            tons[0].total,
+            estilos[0].total
         ];
-
-        const valorMax = Math.max(...dadosTodos, 10);
 
         new Chart(ctx, {
             type: 'bar',
@@ -109,13 +89,12 @@ function montarGrafico(categoria, tom, estilo) {
                 scales: {
                     y: {
                         beginAtZero: true,
-                        max: valorMax + 10,
                         ticks: {
-                            stepSize: 10
+                            stepSize: 4
                         },
                         title: {
                             display: true,
-                            text: 'Quantidade de Usuários'
+                            text: ''
                         }
                     }
                 }
@@ -123,4 +102,83 @@ function montarGrafico(categoria, tom, estilo) {
         });
     });
 }
+
+function montarRanking() {
+    const ctx = document.getElementById('ranking').getContext('2d');
+
+    fetch(`/dashboard/distribuicao`).then(res => res.json()).then(dados => {
+        console.log("DADOS DO BACKEND:", dados);
+        var nomes = [];
+        var categorias = [];
+        var tons = [];
+        var estilos = [];
+
+
+        for (var i = 0; i < dados.categoria.length; i++) {
+            nomes.push(dados.categoria[i].categoria);
+            categorias.push(dados.categoria[i].total);
+            tons.push(null);
+            estilos.push(null);
+
+        }
+
+        for (var i = 0; i < dados.tom.length; i++) {
+            nomes.push(dados.tom[i].tom);
+            tons.push(dados.tom[i].total);
+            estilos.push(null);
+            categorias.push(null);
+
+        }
+
+        for (var i = 0; i < dados.estilo.length; i++) {
+            nomes.push(dados.estilo[i].estilo);
+            estilos.push(dados.estilo[i].total);
+            categorias.push(null);
+            tons.push(null);
+        }
+
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: nomes,
+                datasets: [
+                    {
+                        label: 'Categorias',
+                        data: categorias,
+                        backgroundColor: '#00b894'
+                    },
+                    {
+                        label: 'Tons',
+                        data: tons,
+                        backgroundColor: '#e17055'
+                    },
+                    {
+                        label: 'Estilos',
+                        data: estilos,
+                        backgroundColor: '#0984e3'
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Ranking Geral de Categorias, Tons e Estilos'
+                    },
+                    legend: {
+                        display: true,
+                        position: 'top'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    });
+}
+
 

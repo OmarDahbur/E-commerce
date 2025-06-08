@@ -15,7 +15,7 @@
     <link rel="shortcut icon" href="assets/LOGOOFCNFORCEPNG.png" type="image/x-icon">
 </head>
 
-<body>
+<body onload="buscarDados()">
 <header>
 
     <img src="assets/LOGOOFCNFORCEPNG.png" alt="logo" class="logo" onclick="window.location.href='./index.html'">
@@ -47,9 +47,14 @@
                 <p id="estiloideal"></p>
             </div>
         </div>
+        <div class="graficos">
         <div class="grafico">
             <canvas id="graficesti"></canvas>
         </div>
+        <div class="grafico2">
+            <canvas id="ranking"></canvas>
+        </div>
+    </div>
     </div>
 </main>
 <script src="js/dashboard.js"></script>
